@@ -22,7 +22,7 @@ pipeline {
                 always {
                     junit '**/target/surefire-reports/Test-*.xml'
                 }
-            } 
+            }
         }
 
         stage('Package'){
@@ -34,9 +34,8 @@ pipeline {
                 success {
                     archiveArtifacts artifacts: '**/target/*.jar', followSymlinks: false  
                 }
-            } 
+            }
         }
-
 
     }
 
