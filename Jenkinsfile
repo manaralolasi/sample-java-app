@@ -27,7 +27,7 @@ pipeline {
 
         stage('sonar scan'){
             steps {
-              sh "mvn sonar:sonar -Dsonar.host.url=http://ec2-3-91-243-131.compute-1.amazonaws.com/ -Dsonar.login=sqa_f0f168940baab039aa6ce3d35f5cdb95dfa33bc0"
+              sh "mvn sonar:sonar -Dsonar.host.url=http://ec2-3-91-243-131.compute-1.amazonaws.com/ -Dsonar.login=sqp_a4c121c39873e54ac4bae23a4164328057f3d261"
             }
         }
 
