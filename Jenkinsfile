@@ -1,10 +1,6 @@
 pipeline {
 
-    agent {
-        docker {
-           image 'adoptopenjdk/openjdk11'
-        }
-    }
+    agent 'java-docker-agent'
 
     stages {
 
