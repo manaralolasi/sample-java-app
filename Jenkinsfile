@@ -20,8 +20,14 @@ pipeline {
 
             post {
                 always {
-                    junit '**/target/surefire-reports/TEST-*.xml'
+                    junit '**/target/surefire-reports/Test-*.xml'
                 }
+            }
+        }
+
+        stage('sonar scan'){
+            steps {
+                mvn sonar:sonar -Dsonar.host.url=http://ec2-3-91-243-131.compute-1.amazonaws.com/ -Dsonar.login=sqa_f0f168940baab039aa6ce3d35f5cdb95dfa33bc0
             }
         }
 
@@ -32,7 +38,7 @@ pipeline {
             }
             post {
                 success {
-                    archiveArtifacts artifacts: '**/target/*.war', followSymlinks: false
+                    archiveArtifacts artifacts: '**/target/*.jar', followSymlinks: false
                 }
             }
         }
