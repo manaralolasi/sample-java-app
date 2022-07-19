@@ -6,7 +6,7 @@ pipeline {
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
 
-        AWS_S3_BUCKET = "artefact-bucket-repo1"
+        AWS_S3_BUCKET = "artifact-bucket-repo1"
         ARTIFACT_NAME = "hello-world.war"
         AWS_EB_APP_NAME = "java-webapp"
         AWS_EB_APP_VERSION = "${BUILD_ID}"
