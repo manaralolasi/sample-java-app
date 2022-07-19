@@ -55,12 +55,12 @@ pipeline {
                 sh '''
                 mvn clean verify sonar:sonar \
                     -Dsonar.projectKey=ManarProject \
-                    -Dsonar.host.url=http://54.226.50.200 \
-                    -Dsonar.login=sqp_016fd7a11dbbcbce303523eff6a86b8b51a4c978
-  
-               '''
+                    -Dsonar.host.url=http://$SONAR_IP \
+                    -Dsonar.login=$SONAR_TOKEN
+                '''
             }
         }
+        
 
 
         stage('Package') {
