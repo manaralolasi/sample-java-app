@@ -11,6 +11,9 @@ pipeline {
         AWS_EB_APP_NAME = "java-webapp"
         AWS_EB_APP_VERSION = "${BUILD_ID}"
         AWS_EB_ENVIRONMENT = "Javawebapp-env"
+        
+        SONAR_IP = "54.226.50.200"
+        SONAR_TOKEN = "sqp_016fd7a11dbbcbce303523eff6a86b8b51a4c978"
 
     }
 
@@ -46,6 +49,19 @@ pipeline {
                 }
             }
         }
+        
+        stage('Quality Scan'){
+            steps {
+                sh '''
+                mvn clean verify sonar:sonar \
+                    -Dsonar.projectKey=ManarProject \
+                    -Dsonar.host.url=http://54.226.50.200 \
+                    -Dsonar.login=sqp_016fd7a11dbbcbce303523eff6a86b8b51a4c978
+  
+               '''
+            }
+        }
+
 
         stage('Package') {
             steps {
