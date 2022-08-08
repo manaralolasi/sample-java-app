@@ -6,14 +6,14 @@ pipeline {
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
 
-        AWS_S3_BUCKET = "artifact-bucket-repo1"
-        ARTIFACT_NAME = "hello-world.war"
-        AWS_EB_APP_NAME = "java-webapp"
-        AWS_EB_APP_VERSION = "${BUILD_ID}"
-        AWS_EB_ENVIRONMENT = "Javawebapp-env"
+        AWS_S3_BUCKET = "manar-belt2d2-artifacts-123456" 
+        ARTIFACT_NAME = "hello-world.jar" 
+        AWS_EB_APP_NAME = "Manar-belt2-day2" 
+        AWS_EB_APP_VERSION = "${BUILD_ID}" 
+        AWS_EB_ENVIRONMENT = "Manarbelt2day2-env" 
 
-        SONAR_IP = "54.226.50.200"
-        SONAR_TOKEN = "sqp_1e774b5268619f7b4755d7c40245d9a236217292"
+        SONAR_IP = "52.23.193.18"
+        SONAR_TOKEN = "sqp_169bf61a4e91d7b14cb6bcba61ced558acc4fb5e"
 
     }
 
@@ -53,10 +53,12 @@ pipeline {
         stage('Quality Scan'){
             steps {
                 sh '''
+
                 mvn clean verify sonar:sonar \
-                    -Dsonar.projectKey=ManarAlolasi \
+                    -Dsonar.projectKey=online-Manar-D2B2 \
                     -Dsonar.host.url=http://$SONAR_IP \
                     -Dsonar.login=$SONAR_TOKEN
+
                 '''
             }
         }
@@ -70,7 +72,7 @@ pipeline {
 
             post {
                 success {
-                    archiveArtifacts artifacts: '**/target/**.war', followSymlinks: false
+                    archiveArtifacts artifacts: '**/target/**.jar', followSymlinks: false
 
                    
                 }
@@ -82,7 +84,7 @@ pipeline {
 
                 sh "aws configure set region us-east-1"
 
-                sh "aws s3 cp ./target/**.war s3://$AWS_S3_BUCKET/$ARTIFACT_NAME"
+                sh "aws s3 cp ./target/**.jar s3://$AWS_S3_BUCKET/$ARTIFACT_NAME"
                 
             }
         }
