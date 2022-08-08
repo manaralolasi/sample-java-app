@@ -4,7 +4,7 @@ phases:
   install:
     on-failure: ABORT
     runtime-versions:
-      java: latest
+      java: corretto11
   pre_build:
     on-failure: ABORT
     commands:
@@ -24,10 +24,10 @@ phases:
     commands:
     - echo Build start on 'date'
     - mvn package
-    - mv target/*.war Root.war
+    - mv target/*.jar Root.jar
     - echo Build ends on 'date'
 
 artifacts:
   files:
-    - Root.war
+    - Root.jar
   name: hello-world-artifact
