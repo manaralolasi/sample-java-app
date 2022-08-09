@@ -10,7 +10,7 @@ pipeline {
         ARTIFACT_NAME = "hello-world.jar" 
         AWS_EB_APP_NAME = "Manar-belt2-day2" 
         AWS_EB_APP_VERSION = "${BUILD_ID}" 
-        AWS_EB_ENVIRONMENT = "Manarbelt2day2-env" 
+        AWS_EB_ENVIRONMENT = "Manarbelt2day2-env-1" 
 
         SONAR_IP = "52.23.193.18"
         SONAR_TOKEN = "sqp_169bf61a4e91d7b14cb6bcba61ced558acc4fb5e"
